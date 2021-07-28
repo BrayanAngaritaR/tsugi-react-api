@@ -11,6 +11,8 @@ import {
   EmptyStateSecondaryActions
 } from '@patternfly/react-core';
 
+import { Welcome } from '@app/tsugi';
+
 export interface ISupportProps {
   sampleProp?: string;
 }
@@ -36,6 +38,9 @@ let Support: React.FunctionComponent<ISupportProps> = () => (
         <Button variant="link">In the secondary</Button>
         <Button variant="link">Action area</Button>
       </EmptyStateSecondaryActions>
+      <div>
+            <Welcome name="Tsugi" />
+      </div>
     </EmptyState>
   </PageSection>
 )
