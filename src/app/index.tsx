@@ -6,7 +6,7 @@ import { AppRoutes } from '@app/routes';
 import '@app/app.css';
 
 const App: React.FunctionComponent = () => (
-  <Router>
+  <Router basename="__TSUGI_RELATIVE_PATH__">
     <AppLayout>
       <AppRoutes />
     </AppLayout>

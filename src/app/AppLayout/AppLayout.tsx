@@ -37,7 +37,7 @@ const AppLayout: React.FunctionComponent<IAppLayout> = ({ children }) => {
       history.push('/');
     }
     return (
-      <img src={logo} onClick={handleClick} alt="PatternFly Logo" />
+      <img src="https://www.tsugicloud.org/user/themes/x-corporation/img/logo.png" style={{height: "2em"}} onClick={handleClick} alt="TsugiCloud Logo" />
     );
   }
 

@@ -19,6 +19,10 @@ module.exports = merge(common('production'), {
       })
     ],
   },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: 'http://localhost:8888/dist/',
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css',
@@ -33,6 +37,15 @@ module.exports = merge(common('production'), {
           ...stylePaths
         ],
         use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.tsx$/,
+        loader: 'string-replace-loader',
+        options: {
+          search: '__TSUGI_RELATIVE_PATH__',
+          replace: '/dist',
+          flags: 'g'
+        }
       }
     ]
   }
