@@ -26,6 +26,15 @@ module.exports = merge(common('development'), {
           ...stylePaths
         ],
         use: ["style-loader", "css-loader"]
+      },
+      {
+        test: /\.tsx$/,
+        loader: 'string-replace-loader',
+        options: {
+          search: '__TSUGI_RELATIVE_PATH__',
+          replace: '/dist',
+          flags: 'g'
+        }
       }
     ]
   }
