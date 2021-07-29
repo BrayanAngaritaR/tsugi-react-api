@@ -13,6 +13,7 @@ import {
 
 import { Welcome } from '@app/tsugi';
 import { TsugiWelcome } from 'tsugi-react';
+import { TsugiZap } from 'tsugi-react';
 
 export interface ISupportProps {
   sampleProp?: string;
@@ -40,7 +41,8 @@ let Support: React.FunctionComponent<ISupportProps> = () => (
         <Button variant="link">Action area</Button>
       </EmptyStateSecondaryActions>
       <div>
-            <Welcome name="Chuck" />
+            <TsugiWelcome name="Chuck" />
+            <TsugiZap name="Chuck" />
       </div>
     </EmptyState>
   </PageSection>
