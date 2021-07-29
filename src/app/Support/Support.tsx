@@ -12,6 +12,7 @@ import {
 } from '@patternfly/react-core';
 
 import { Welcome } from '@app/tsugi';
+import { TsugiWelcome } from 'tsugi-react';
 
 export interface ISupportProps {
   sampleProp?: string;
@@ -39,7 +40,7 @@ let Support: React.FunctionComponent<ISupportProps> = () => (
         <Button variant="link">Action area</Button>
       </EmptyStateSecondaryActions>
       <div>
-            <Welcome name="Tsugi" />
+            <Welcome name="Chuck" />
       </div>
     </EmptyState>
   </PageSection>

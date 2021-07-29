@@ -32,7 +32,7 @@ module.exports = merge(common('development'), {
         loader: 'string-replace-loader',
         options: {
           search: '__TSUGI_RELATIVE_PATH__',
-          replace: '/dist',
+          replace: '/',
           flags: 'g'
         }
       }
