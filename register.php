@@ -7,6 +7,7 @@ $REGISTER_LTI2 = array(
 "description" => "This is a simple React tool.",
     // By default, accept launch messages..
     "messages" => array("launch"),
+    "tool_phase" => "react",
     "privacy_level" => "name_only",  // anonymous, name_only, public
     "license" => "Apache",
     "languages" => array(
