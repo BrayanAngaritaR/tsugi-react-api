@@ -1,6 +1,7 @@
 **/node_modules
 *.swp
 dist
+tsugi
 yarn-error.log
 stats.json
 coverage
