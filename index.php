@@ -8,9 +8,11 @@ use \Tsugi\Core\LTIX;
 $LAUNCH = LTIX::requireData();
 
 $data = file_get_contents("dist/index.html");
+// Remove the developer data
+$data = preg_replace("/<script>var _TSUGI =.*?<.script>/s", "", $data);
 $pos = strpos($data,"</head>");
 echo(substr($data,0,$pos));
-$OUTPUT->headerData();
+echo($OUTPUT->headerData());
 echo(substr($data,$pos));
 
 
