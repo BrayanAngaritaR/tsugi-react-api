@@ -4,8 +4,10 @@ Tsugi React Base Tool
 ## Quick-start
 
 ```bash
-git clone https://github.com/csev/patternfly-seed
-cd patternfly-seed
+# Get into your Tsugi mod folder
+cd ... /mod
+git clone https://github.com/csev/tsugi-react-base
+cd tsugi-react-base
 npm install && npm run start:dev
 ```
 ## Development scripts
@@ -16,9 +18,18 @@ npm install
 # Start the development server
 npm run start:dev
 
-# Run a tsugi build (outputs to "tsugi" dir)
-npm run tsugi
+# Before you run the `tsugi` build process, you must edit the `webpack.prod.js`
+# file and edit the `publicPath` and `replace` field to reflect
+# the actual path on your web server where the folder will be available
+# TODO: Automate this :)
 
+# Run a tsugi build (outputs to "dist" dir)
+npm run build
+```
+
+## Other Scripts
+
+```sh
 # Run the test suite
 npm run test
 

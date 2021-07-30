@@ -12,7 +12,7 @@ $REGISTER_LTI2 = array(
     "languages" => array(
         "English"
     ),
-    "source_url" => "https://github.com/csev/patternfly-seed",
+    "source_url" => "https://github.com/csev/tsugi-react-base",
     // For now Tsugi tools delegate this to /lti/store
     "placements" => array(
         /*

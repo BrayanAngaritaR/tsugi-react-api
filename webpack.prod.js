@@ -21,7 +21,7 @@ module.exports = merge(common('production'), {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: 'http://localhost:8888/py4e/mod/patternfly-seed/',
+    publicPath: 'http://localhost:8888/py4e/mod/tsugi-react-base/dist/',
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -43,7 +43,7 @@ module.exports = merge(common('production'), {
         loader: 'string-replace-loader',
         options: {
           search: '__TSUGI_RELATIVE_PATH__',
-          replace: '/py4e/mod/patternfly-seed',
+          replace: '/py4e/mod/tsugi-react-base',
           flags: 'g'
         }
       }
