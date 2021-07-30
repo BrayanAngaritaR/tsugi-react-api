@@ -2,7 +2,7 @@
 
 $REGISTER_LTI2 = array(
 "name" => "React Tsugi Base",
-"FontAwesome" => "fa-server",
+"FontAwesome" => "fa-atom",
 "short_name" => "React Tool",
 "description" => "This is a simple React tool.",
     // By default, accept launch messages..
