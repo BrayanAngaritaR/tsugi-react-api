@@ -21,7 +21,7 @@ module.exports = merge(common('production'), {
   },
   output: {
     path: path.resolve(__dirname, 'tsugi'),
-    publicPath: 'http://localhost:8888/py4e/mod/patternfly-seed/',
+    publicPath: 'http://localhost:8888/py4e/mod/patternfly-seed/tsugi/',
   },
   plugins: [
     new MiniCssExtractPlugin({
