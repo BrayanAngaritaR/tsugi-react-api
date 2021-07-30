@@ -1,7 +1,7 @@
 <?php
 
 $REGISTER_LTI2 = array(
-"name" => "React Tsugi Tool",
+"name" => "React Tsugi Base",
 "FontAwesome" => "fa-server",
 "short_name" => "React Tool",
 "description" => "This is a simple React tool.",
