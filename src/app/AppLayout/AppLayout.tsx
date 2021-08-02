@@ -12,7 +12,6 @@ import {
   SkipToContent
 } from '@patternfly/react-core';
 import { routes, IAppRoute, IAppRouteGroup } from '@app/routes';
-import logo from '@app/bgimages/Patternfly-Logo.svg';
 import { TsugiDone } from '@app/tsugi_local';
 
 interface IAppLayout {
@@ -33,19 +32,8 @@ const AppLayout: React.FunctionComponent<IAppLayout> = ({ children }) => {
     setIsMobileView(props.mobileView);
   };
 
-  function LogoImg() {
-    const history = useHistory();
-    function handleClick() {
-      history.push('/');
-    }
-    return (
-      <img src="https://www.tsugicloud.org/user/themes/x-corporation/img/logo.png" style={{height: "2em"}} onClick={handleClick} alt="TsugiCloud Logo" />
-    );
-  }
-
   const Header = (
     <PageHeader
-      logo={<LogoImg />}
       showNavToggle
       headerTools={<TsugiDone />}
       isNavOpen={isNavOpen}
