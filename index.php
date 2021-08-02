@@ -27,7 +27,7 @@ echo($OUTPUT->headerData());
 ?>
 <script>
 window.sessionStorage.setItem('_TSUGI',  JSON.stringify(_TSUGI));
-console.log("Stored _TSUGI in sessionStorage", _TSUGI);
+console.log("Stored _TSUGI in sessionStorage");
 </script>
 <?php
 echo(substr($data,$pos));
