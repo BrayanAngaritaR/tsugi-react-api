@@ -7,23 +7,48 @@
   <meta id="appName" name="application-name" content="Tsugi React Base">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="/">
-    <script>
-          var _TSUGI = {
-            context_title: "Introduction to Programming",
-            link_title: "tsugi-react-base",
-            user_displayname: "Jane Instructor",
-            instructor: true,  
-            spinnerUrl: "https://static.tsugi.org/img/spinner.gif",
-            staticroot: "https://static.tsugi.org",
-            wwwroot: "/tsugi",
-            websocket_url: false,
-            websocket_token: false,
-            window_close_message: "Application complete",
-            session_expire_message: "Your session has expired"
-        }
-      // TODO: Alert this once
-      console.log("Developer mode - fake data");
-    </script>
+<script>
+// https://stackoverflow.com/questions/5448545/how-to-retrieve-get-parameters-from-javascript
+function findGetParameter(parameterName) {
+    var result = null,
+    tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
+
+var tsugiStr = findGetParameter('_TSUGI');
+var tsugi = JSON.parse(tsugiStr);
+
+if ( typeof tsugi === 'object' && tsugi !== null && !Array.isArray(tsugi) ) {
+    var _TSUGI = tsugi;
+} else {
+    var alerted = window.sessionStorage.getItem('alerted');
+    if ( alerted != 'yes' ) {
+       alert("This should be launched through Tsugi and https://github.com/tsugiproject/nodelauch");
+    }
+    window.sessionStorage.setItem('alerted', 'yes');
+
+    var _TSUGI = {
+        context_title: "Introduction to Programming",
+        link_title: "tsugi-react-base",
+        user_displayname: "Jane Instructor",
+        instructor: true,
+        spinnerUrl: "https://static.tsugi.org/img/spinner.gif",
+        staticroot: "https://static.tsugi.org",
+        wwwroot: "/tsugi",
+        websocket_url: false,
+        websocket_token: false,
+        window_close_message: "Application complete",
+        session_expire_message: "Your session has expired"
+    }
+}
+</script>
 </head>
 
 <body>
