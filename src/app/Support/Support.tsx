@@ -12,6 +12,7 @@ import {
 } from '@patternfly/react-core';
 
 import { Welcome } from '@app/tsugi';
+import { TsugiLocal } from '@app/tsugi_local';
 import { TsugiWelcome } from 'tsugi-react';
 import { TsugiZap } from 'tsugi-react';
 
@@ -43,6 +44,7 @@ let Support: React.FunctionComponent<ISupportProps> = () => (
       <div>
             <TsugiWelcome name="Chuck" />
             <TsugiZap name="Chuck" />
+            <TsugiLocal name="Chuck" />
       </div>
     </EmptyState>
   </PageSection>
