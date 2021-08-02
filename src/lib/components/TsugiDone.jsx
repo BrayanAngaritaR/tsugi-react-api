@@ -22,8 +22,8 @@ function window_close()
 }
 
 function TsugiDone() {
-  function handleSubmit(e) {
-    e.preventDefault();    console.log('You clicked submit.');
+  function handleClick(e) {
+    e.preventDefault();
     window_close();
   }
 
@@ -31,7 +31,7 @@ function TsugiDone() {
 
   return (
      <div>
-      <Button onClick={handleSubmit}>Done</Button>
+      <Button onClick={handleClick}>Done</Button>
      </div>
   );
 }

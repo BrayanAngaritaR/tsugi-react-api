@@ -1,4 +1,4 @@
-import { TsugiLocal } from './components/TsugiLocal';
+import { TsugiDone } from './components/TsugiDone';
 
-export { TsugiLocal };
+export { TsugiDone };
 

@@ -11,9 +11,7 @@ import {
   EmptyStateSecondaryActions
 } from '@patternfly/react-core';
 
-import { TsugiLocal } from '@app/tsugi_local';
 import { TsugiWelcome } from 'tsugi-react';
-import { TsugiZap } from 'tsugi-react';
 
 export interface ISupportProps {
   sampleProp?: string;
@@ -42,8 +40,6 @@ let Support: React.FunctionComponent<ISupportProps> = () => (
       </EmptyStateSecondaryActions>
       <div>
             <TsugiWelcome name="Chuck" />
-            <TsugiZap name="Chuck" />
-            <TsugiLocal name="Chuck" />
       </div>
     </EmptyState>
   </PageSection>
