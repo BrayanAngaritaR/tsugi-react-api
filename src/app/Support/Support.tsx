@@ -11,7 +11,6 @@ import {
   EmptyStateSecondaryActions
 } from '@patternfly/react-core';
 
-import { Welcome } from '@app/tsugi';
 import { TsugiLocal } from '@app/tsugi_local';
 import { TsugiWelcome } from 'tsugi-react';
 import { TsugiZap } from 'tsugi-react';
