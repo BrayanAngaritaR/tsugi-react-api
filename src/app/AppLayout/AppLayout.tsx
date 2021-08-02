@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import {
+  Button,
   Nav,
   NavList,
   NavItem,
   NavExpandable,
   Page,
   PageHeader,
+  PageHeaderTools,
   PageSidebar,
   SkipToContent
 } from '@patternfly/react-core';
@@ -15,6 +17,21 @@ import logo from '@app/bgimages/Patternfly-Logo.svg';
 
 interface IAppLayout {
   children: React.ReactNode;
+}
+
+function inIframe(props) {
+  var retval =  (window.location !== window.parent.location );
+  return ( retval );
+}
+
+
+// https://stackoverflow.com/questions/19761241/window-close-and-self-close-do-not-close-the-window-in-chrome
+// How to close a window even if we did not open it
+function window_close()
+{
+    window.close();
+    setTimeout(function(){ console.log("Attempting self.close"); self.close(); }, 1000);
+    setTimeout(function(){ console.log("Notifying the user."); alert(_TSUGI.window_close_message); open("about:blank", '_self').close(); }, 2000);
 }
 
 const AppLayout: React.FunctionComponent<IAppLayout> = ({ children }) => {
@@ -41,10 +58,27 @@ const AppLayout: React.FunctionComponent<IAppLayout> = ({ children }) => {
     );
   }
 
+function TsugiDone() {
+  function handleSubmit(e) {
+    e.preventDefault();    console.log('You clicked submit.');
+    window_close();
+  }
+
+  if ( inIframe() ) return null;
+
+  return (
+     <div>
+      <Button onClick={handleSubmit}>Done</Button>
+     </div>
+  );
+}
+
+
   const Header = (
     <PageHeader
       logo={<LogoImg />}
       showNavToggle
+      headerTools={<TsugiDone />}
       isNavOpen={isNavOpen}
       onNavToggle={isMobileView ? onNavToggleMobile : onNavToggle}
     />
