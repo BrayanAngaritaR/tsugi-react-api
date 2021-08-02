@@ -7,6 +7,7 @@
   <meta id="appName" name="application-name" content="Tsugi React Base">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="/">
+<!-- BEGIN TSUGI -->
 <!-- keep the exact format of the following string - it is used in index.php -->
 <script>var starttsugi = true;
 
@@ -24,35 +25,30 @@ function findGetParameter(parameterName) {
     return result;
 }
 
-var tsugiStr = findGetParameter('_TSUGI');
-var tsugi = JSON.parse(tsugiStr);
-var tsugiSession = window.sessionStorage.getItem('_TSUGI', 'yes');
+var tsugiGetStr = findGetParameter('_TSUGI');
+var tsugiGet = null;
+try {
+    tsugiGet = JSON.parse(tsugiGetStr)
+} catch (e) {
+    tsugiGet = null;
+}
 
-if ( typeof tsugi === 'object' && tsugi !== null && !Array.isArray(tsugi) ) {
-    var _TSUGI = tsugi;
-    window.sessionStorage.setItem('_TSUGI', _TSUGI);
+var tsugiSessionStr = window.sessionStorage.getItem('_TSUGI', null);
+var tsugiSession = null;
+try {
+    tsugiSession = JSON.parse(tsugiSessionStr)
+} catch (e) {
+    tsugiSession = null;
+}
+
+if ( typeof tsugiGet === 'object' && tsugiGet !== null && !Array.isArray(tsugiGet) ) {
+    var _TSUGI = tsugiGet;
+    window.sessionStorage.setItem('_TSUGI', JSON.stringify(_TSUGI));
 } else if ( typeof tsugiSession === 'object' && tsugiSession !== null && !Array.isArray(tsugiSession) ) {
     var _TSUGI = tsugiSession;
+    console.log("Restored _TSUGI from sessionStorage");
 } else {
-    var alerted = window.sessionStorage.getItem('alerted');
-    if ( alerted != 'yes' ) {
-       alert("This should be launched through Tsugi and https://github.com/tsugiproject/nodelauch");
-    }
-    window.sessionStorage.setItem('alerted', 'yes');
-
-    var _TSUGI = {
-        context_title: "Introduction to Programming",
-        link_title: "tsugi-react-base",
-        user_displayname: "Jane Instructor",
-        instructor: true,
-        spinnerUrl: "https://static.tsugi.org/img/spinner.gif",
-        staticroot: "https://static.tsugi.org",
-        wwwroot: "/tsugi",
-        websocket_url: false,
-        websocket_token: false,
-        window_close_message: "Application complete",
-        session_expire_message: "Your session has expired"
-    }
+    alert("This tool should be launched through Tsugi or through https://github.com/tsugiproject/nodelauch");
 }
 </script>
 <!-- END TSUGI -->
