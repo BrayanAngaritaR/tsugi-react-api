@@ -7,7 +7,9 @@
   <meta id="appName" name="application-name" content="Tsugi React Base">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="/">
-<script>
+<!-- keep the exact format of the following string - it is used in index.php -->
+<script>var starttsugi = true;
+
 // https://stackoverflow.com/questions/5448545/how-to-retrieve-get-parameters-from-javascript
 function findGetParameter(parameterName) {
     var result = null,
@@ -53,6 +55,7 @@ if ( typeof tsugi === 'object' && tsugi !== null && !Array.isArray(tsugi) ) {
     }
 }
 </script>
+<!-- END TSUGI -->
 </head>
 
 <body>
