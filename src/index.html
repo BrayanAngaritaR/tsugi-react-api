@@ -24,9 +24,13 @@ function findGetParameter(parameterName) {
 
 var tsugiStr = findGetParameter('_TSUGI');
 var tsugi = JSON.parse(tsugiStr);
+var tsugiSession = window.sessionStorage.getItem('_TSUGI', 'yes');
 
 if ( typeof tsugi === 'object' && tsugi !== null && !Array.isArray(tsugi) ) {
     var _TSUGI = tsugi;
+    window.sessionStorage.setItem('_TSUGI', _TSUGI);
+} else if ( typeof tsugiSession === 'object' && tsugiSession !== null && !Array.isArray(tsugiSession) ) {
+    var _TSUGI = tsugiSession;
 } else {
     var alerted = window.sessionStorage.getItem('alerted');
     if ( alerted != 'yes' ) {
