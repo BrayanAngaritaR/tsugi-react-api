@@ -30,16 +30,15 @@ const Attend: React.FunctionComponent = () => {
   const [isModalOpen,setisModalOPen]=useState(false);
   useEffect(() => {
     //console.log(window.sessionStorage.getItem("_old_code"))
-    const result = attendServices.GetAttendData();
-    result.then(data => {
-      setRows( data.map(data1 => {
-      return {cells: [data1.user_id, data1.attend, data1.ipaddr]}
-     }))
-      
-     
-    })
-    
-    .catch(err =>console.log(err))
+    if ( _TSUGI.instructor ) {
+      const result = attendServices.GetAttendData();
+      result.then(data => {
+        setRows( data.map(data1 => {
+        return {cells: [data1.user_id, data1.attend, data1.ipaddr]}
+       }))
+      })
+      .catch(err =>console.log(err))
+    }
   }, []);
   if ( _TSUGI.instructor ) {
   return (
