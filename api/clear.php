@@ -1,13 +1,13 @@
 <?php
 require_once "../../config.php";
 
-use \Tsugi\Core\LTIX;
-use \Tsugi\UI\Output;
 use \Tsugi\Util\U;
 use \Tsugi\Util\Net;
+use \Tsugi\Core\Rest;
+use \Tsugi\UI\Output;
+use \Tsugi\Core\LTIX;
 
-// Make sure errors are sent via JSON
-Output::headerJson();
+if ( Rest::preFlight() ) return;
 
 // No parameter means we require CONTEXT, USER, and LINK
 $LAUNCH = LTIX::requireData(); 
@@ -36,5 +36,5 @@ if ( $LAUNCH->user->instructor ) {
 $retval = new \stdClass();
 $retval->status = "success";
 
-Output::jsonOutput($retval);
+echo(json_encode($retval));
 

@@ -2,12 +2,11 @@
 require_once "../../config.php";
 
 use \Tsugi\Core\LTIX;
-use \Tsugi\UI\Output;
 use \Tsugi\Util\U;
 use \Tsugi\Util\Net;
+use \Tsugi\Core\Rest;
 
-// Make sure errors are sent via JSON
-Output::headerJson();
+if ( Rest::preFlight() ) return;
 
 // No parameter means we require CONTEXT, USER, and LINK
 $LAUNCH = LTIX::requireData(); 
@@ -32,7 +31,7 @@ if ( strlen($match) > 0 && substr($match, 0, 1) == '/' ) {
         $retval->detail = __('IP Address '.$ip.' does not match (regex).');
         $retval->status = "failure";
         Net::send403();
-        Output::jsonOutput($retval);
+        echo(json_encode($retval));
         return;
     }
 }
@@ -42,7 +41,7 @@ if ( strlen($match) > 0 && substr($match, 0, 1) != '/' ) {
         $retval->detail = __('IP Address '.$ip.' does not match.');
         $retval->status = "failure";
         Net::send403();
-        Output::jsonOutput($retval);
+        echo(json_encode($retval));
         return;
     }
 }
@@ -61,5 +60,6 @@ if ( $old_code == $data->code ) {
     $retval->status = "success";
 }
 
-Output::jsonOutput($retval);
+echo(json_encode($retval));
+
 
