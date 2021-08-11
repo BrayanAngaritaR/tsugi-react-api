@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useState,useEffect} from 'react';
 import { PageSection,Title, Form, FormGroup, TextInput,Button
  } from '@patternfly/react-core';
- import dashboardServices from '../../services/dashboard.services';
+ import attendServices from '../../services/attend.services';
 
 export const RecordAttendance: React.FC = () => {
   const [code,setCode]= useState('');
@@ -14,7 +14,7 @@ export const RecordAttendance: React.FC = () => {
     
     function submitAttendance(){
      if(code=="123456"){
-      dashboardServices.RecordAttendance(data);
+      attendServices.RecordAttendance(data);
       setcodeError('Success');
      }else
      {

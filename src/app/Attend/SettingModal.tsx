@@ -4,7 +4,7 @@ import { PageSection,Button,Modal,
     ModalVariant, Form, FormGroup, TextInput, 
     Checkbox, Popover, ActionGroup
  } from '@patternfly/react-core';
- import dashboardServices from '../../services/dashboard.services';
+ import attendServices from '../../services/attend.services';
 import {
   Table,
   TableHeader,
@@ -23,7 +23,7 @@ export const SettingModal: React.FC<settingprops> = ({isModalOpen,setisModalOPen
   const [ipaddr,setipaddr]=useState('');
   
    useEffect(() => {
-     const result = dashboardServices.GetInstructorData();
+     const result = attendServices.GetInstructorData();
     result.then(data => {
       console.log(data);
     })
@@ -40,7 +40,7 @@ export const SettingModal: React.FC<settingprops> = ({isModalOpen,setisModalOPen
     //console.log(data);
    function  submitSetting(){
       setisModalOPen(false);
-      const result = dashboardServices.UpdateSettings(data);
+      const result = attendServices.UpdateSettings(data);
      }
    
   

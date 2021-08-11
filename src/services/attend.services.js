@@ -3,7 +3,7 @@ import httpService from './http.services';
 import { errorCatcher } from './errors';
 
 
-const GetDashboardData = () => httpService
+const GetAttendData = () => httpService
   .get(`/mod/rattend/api/getrows.php?PHPSESSID=ddae2649715c4917534f03d5a7ded0d3&_=1628594177011`)
   .then(({ data }) => data)
   .catch((err) => {
@@ -45,4 +45,4 @@ const ClearData = () => httpService
   // return Promise.reject(err.response.data);
 });
 
-export default {GetDashboardData,UpdateSettings,RecordAttendance,GetInstructorData,ClearData};
+export default {GetAttendData,UpdateSettings,RecordAttendance,GetInstructorData,ClearData};

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useState,useEffect} from 'react';
 import {SettingModal} from './SettingModal';
-import dashboardServices from '../../services/dashboard.services';
+import attendServices from '../../services/attend.services';
 import { PageSection, Title,Button} from '@patternfly/react-core';
 import {
   Table,
@@ -14,7 +14,7 @@ import { bool } from 'prop-types';
 export  interface rowsInterfact {
   cells: any
 }
-const Dashboard: React.FunctionComponent = () => {
+const Attend: React.FunctionComponent = () => {
  
   const [columns, setColumn] = useState([
     { title: 'User' },
@@ -29,7 +29,7 @@ const Dashboard: React.FunctionComponent = () => {
   const [isModalOpen,setisModalOPen]=useState(false);
   useEffect(() => {
     //console.log(window.sessionStorage.getItem("_old_code"))
-    const result = dashboardServices.GetDashboardData();
+    const result = attendServices.GetAttendData();
     result.then(data => {
       setRows( data.map(data1 => {
       return {cells: [data1.user_id, data1.attend, data1.ipaddr]}
@@ -47,7 +47,7 @@ const Dashboard: React.FunctionComponent = () => {
     <div className="page-header">
     <Title headingLevel="h1" size="lg">Tsugi React</Title>
     <div className="header-btns"> 
-    <Button variant="primary" onClick={ ()=>dashboardServices.ClearData()
+    <Button variant="primary" onClick={ ()=>attendServices.ClearData()
     }>
           Clear
     </Button>
@@ -69,4 +69,4 @@ const Dashboard: React.FunctionComponent = () => {
   </>
 )
   }
-export { Dashboard };
+export { Attend };
