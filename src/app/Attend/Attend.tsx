@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {useState,useEffect} from 'react';
 import {SettingModal} from './SettingModal';
+import {RecordAttendance} from './RecordAttendence';
 import attendServices from '../../services/attend.services';
 import { PageSection, Title,Button} from '@patternfly/react-core';
 import {
@@ -8,7 +9,7 @@ import {
   TableHeader,
   TableBody, 
 } from '@patternfly/react-table';
-import './dashboard.css';
+import './attend.css';
 import { bool } from 'prop-types';
 
 export  interface rowsInterfact {
@@ -40,6 +41,7 @@ const Attend: React.FunctionComponent = () => {
     
     .catch(err =>console.log(err))
   }, []);
+  if ( _TSUGI.instructor ) {
   return (
     <>
    
@@ -68,5 +70,13 @@ const Attend: React.FunctionComponent = () => {
   </PageSection>
   </>
 )
+} else {
+return (
+<PageSection>
+<RecordAttendance/>
+</PageSection>
+)
+}
+
   }
 export { Attend };
