@@ -1,14 +1,16 @@
 import axios from 'axios';
 
 
-
-const baseURL = "https://dev-tsugi.currikistudio.org";
+const baseURL = _TSUGI.apphome;
 
 const http = axios.create({ baseURL: `${baseURL}/` });
 
 function getAuthHeader() {
 
-  let authHeader = { 'Content-Type': 'application/x-www-form-urlencoded' };
+  let authHeader = { 
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'X-Tsugi-Authorization': _TSUGI.react_token,
+  };
  
   return authHeader;
 }
