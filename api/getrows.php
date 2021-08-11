@@ -3,25 +3,10 @@ require_once "../../config.php";
 
 use \Tsugi\Util\U;
 use \Tsugi\Util\Net;
+use \Tsugi\Core\Rest;
 use \Tsugi\Core\LTIX;
 
-$http_origin = $_SERVER['HTTP_ORIGIN'];
-$http_method = $_SERVER['REQUEST_METHOD'];
-
-if ( strpos($http_origin, "http://localhost:") === 0 )  { 
-    header("Access-Control-Allow-Origin: $http_origin");
-    header('Access-Control-Allow-Credentials: true');
-    header('Access-Control-Allow-Headers: x-tsugi-authorization');
-    header('Access-Control-Max-Age: 86400');
-    if ( $http_method == "OPTIONS" ) return;
-}
-
-$headers = apache_request_headers();
-
-$session = U::get($headers, 'X-Tsugi-Authorization');
-error_log("session ".$session);
-
-if ( is_string($session) ) $_GET[session_name()] = $session;
+if ( Rest::preFlight() ) return;
 
 $LAUNCH = LTIX::requireData(); 
 if ( ! $USER->instructor ) {
@@ -49,5 +34,5 @@ foreach($rows as $row) {
     $row['displayname'] = $displayname;
 }
 
-$OUTPUT->jsonOutput($rows);
+echo(json_encode($rows));
 
