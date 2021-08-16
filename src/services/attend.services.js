@@ -14,7 +14,7 @@ const GetAttendData = () => httpService
 
 
 const GetInstructorData = () => httpService
-.get(`/tsugi/api/settings.php`)
+.get(`/api/settings.php`)
 .then(({ data }) => data)
 .catch((err) => {
   console.log(err);
@@ -23,7 +23,7 @@ const GetInstructorData = () => httpService
 });
 
 const UpdateSettings = (data) => httpService
-.post(`/tsugi/api/settings.php`,data)
+.post(`/api/settings.php`,data)
 .then(({ data }) => data)
 .catch((err) => {
   //errorCatcher(err.response.data);
@@ -32,7 +32,14 @@ const UpdateSettings = (data) => httpService
 
 const RecordAttendance = (data) => httpService
 .post(`/mod/tsugi-react-base/api/attend.php`,data)
-.then(({ data }) => data)
+.then(({ data }) => {
+  data; 
+  if(data.status == 'success'){
+    alert("Success!");
+  } else {
+    alert("Something was wrong");
+  }
+})
 .catch((err) => {
   errorCatcher(err.response.data);
    Promise.reject(err.response.data);

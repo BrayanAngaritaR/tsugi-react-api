@@ -13,7 +13,7 @@ $LAUNCH = LTIX::requireData();
 
 // Takes raw data from the request
 $json = file_get_contents('php://input');
-$data = json_decode($json);
+//$data = json_decode($json);
 
 // Model
 $p = $CFG->dbprefix;
@@ -24,7 +24,7 @@ $ip = Net::getIP();
 
 $retval = new \stdClass();
 $retval->status = "failure";
-$retval->detail = "";
+$retval->detail = "General error";
 
 if ( strlen($match) > 0 && substr($match, 0, 1) == '/' ) {
     if (!preg_match($match, $ip) ) {
@@ -46,7 +46,7 @@ if ( strlen($match) > 0 && substr($match, 0, 1) != '/' ) {
     }
 }
 
-if ( $old_code == $data->code ) {
+if ( $old_code == $_POST['code'] ) {
     $PDOX->queryDie("INSERT INTO {$p}attend
         (link_id, user_id, ipaddr, attend, updated_at)
         VALUES ( :LI, :UI, :IP, NOW(), NOW() )
@@ -58,6 +58,7 @@ if ( $old_code == $data->code ) {
         )
     );
     $retval->status = "success";
+    $retval->detail = "Code successfully inserted";
 }
 
 echo(json_encode($retval));

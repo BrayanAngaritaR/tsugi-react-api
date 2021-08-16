@@ -7,19 +7,29 @@ import { PageSection,Title, Form, FormGroup, TextInput,Button
 export const RecordAttendance: React.FC = () => {
   const [code,setCode]= useState('');
   const [codeError,setcodeError]=useState('');
-    const data= 
-      {
-        "code": code
-    }
+    
     
     function submitAttendance(){
-     if(code=="123456"){
-      attendServices.RecordAttendance(data);
-      setcodeError('Success');
-     }else
-     {
-      setcodeError("Your code is invalid/Enter 12346 for success");
-    }
+      // const data = 
+      // {
+      //   "code": code
+      // }
+
+      //const PHPSESSID = _TSUGI.react_token; 
+
+      const form_data = new FormData();
+
+      form_data.append("code", code);
+
+      attendServices.RecordAttendance(form_data);
+
+    //  if(code=="123456"){
+      
+    //   setcodeError('Success');
+    //  }else
+    //  {
+    //   setcodeError("Your code is invalid/Enter 12346 for success");
+    // }
   }
   return (
     <>
@@ -43,7 +53,6 @@ export const RecordAttendance: React.FC = () => {
             aria-describedby="simple-form-name-01-helper"
             value={code}
             onChange={(e)=>{
-              
               setCode(e)
             }}
           />

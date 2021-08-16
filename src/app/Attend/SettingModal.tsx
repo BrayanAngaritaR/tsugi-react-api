@@ -29,19 +29,31 @@ export const SettingModal: React.FC<settingprops> = ({isModalOpen,setisModalOPen
     })
     .catch(err =>console.log(err))
  }, []);
- 
-    const data= 
-    {
-      "PHPSESSID": "f9f2db41533a13e8c60531143418d86d",
-      "code": "1234",
-      "grade": "1",
-      "match": ""
-  }
-    //console.log(data);
+
+    const PHPSESSID = _TSUGI.react_token; 
+       
+   //console.log(data);
    function  submitSetting(){
+
+      // const data = 
+      // {
+      //    "PHPSESSID": PHPSESSID,
+      //    "code": code,
+      //    "grade": grade,
+      //    "match": ""
+      // }
+
+      const form_data = new FormData();
+
+      form_data.append("PHPSESSID", PHPSESSID);
+      form_data.append("code", code);
+      form_data.append("grade", grade);
+      form_data.append("match", "");
+
       setisModalOPen(false);
-      const result = attendServices.UpdateSettings(data);
-     }
+
+      const result = attendServices.UpdateSettings(form_data);
+   }
    
   
   return (
@@ -49,7 +61,7 @@ export const SettingModal: React.FC<settingprops> = ({isModalOpen,setisModalOPen
   <PageSection>
       <Modal
           variant={ModalVariant.medium}
-          title="rattend Settings"
+          title="React Attent Settings"
           isOpen={isModalOpen}
           onClose={()=>setisModalOPen(false)}
           actions={[
@@ -65,7 +77,7 @@ export const SettingModal: React.FC<settingprops> = ({isModalOpen,setisModalOPen
         <FormGroup
           isRequired
           fieldId="simple-form-name-01"
-          helperText="Configure the LTI Tool"
+          helperText="Configure the LTI Tool :D"
         >
         </FormGroup>
         <FormGroup
@@ -83,7 +95,6 @@ export const SettingModal: React.FC<settingprops> = ({isModalOpen,setisModalOPen
             aria-describedby="simple-form-name-01-helper"
             value={code}
             onChange={(e)=>{
-              
               setcode(e)
             }}
           />
@@ -94,6 +105,11 @@ export const SettingModal: React.FC<settingprops> = ({isModalOpen,setisModalOPen
             id="checkbox01"
             name="checkbox01"
             aria-label="Update via email"
+            isChecked={grade === 1 ? true : false}
+            onChange={(e)=>{
+              console.log(e)
+              setgrade(e?1:0)
+            }}
           />
         </FormGroup>
         <FormGroup

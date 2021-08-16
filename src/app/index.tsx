@@ -7,8 +7,14 @@ import '@app/app.css';
 
 const App: React.FunctionComponent = () => {
   var bname="__TSUGI_RELATIVE_PATH__";
-  console.log('App running at:', bname);
-  console.log(_TSUGI);
+  // console.log('App running at:', bname);
+  // console.log(_TSUGI);
+
+  // const tsugi_global = _TSUGI;
+  // console.log("===============================");
+  // console.log(tsugi_global.ajax_session);
+  // console.log("===============================");
+  
   return (
   <Router basename={ bname }>
     <AppLayout>
