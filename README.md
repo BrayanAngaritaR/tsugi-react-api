@@ -76,6 +76,8 @@ I have finally commented the following code:
 
 ###### Database
 
+When the instructor inserts a new code, it will be saved in the `lti_link` table and in the `settings` field.
+
 * * *
 
 ##### Modifying the student actions.
